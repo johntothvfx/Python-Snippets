@@ -1,0 +1,40 @@
+# Get all nodes of type Read
+readnodes = nuke.allNodes('Read')
+for readnode in readnodes:
+    print readnode
+
+
+
+# List all knobs for selected node
+print( nuke.toNode('Read1') )
+
+# List all knobs for specific node
+print( nuke.selectedNode() )
+
+# Get value from specific node
+value = nuke.toNode('Read1').knob('file').getValue()
+
+# Get value from selected node
+value = nuke.selectedNode().knob('file').getValue()
+
+# Get value from this node
+value = nuke.thisNode().knob('file').getValue()
+
+# Get value from specific node and evaluate it (good for expressions)
+value = nuke.toNode('Read1').knob('file').evaluate()
+
+
+
+# Set specific node's value
+nuke.toNode('Read1').knob('file').setValue('c:/hello.tif')
+
+# Set selected node's value
+nuke.selectedNode().knob('file').setValue('c:/hello.tif')
+
+# Set this node's value
+nuke.thisNode().knob('file').setValue('c:/hello.tif')
+
+
+
+# Set specific node's knob to default value
+nuke.toNode('Grade1').knob('gamma').setValue( nuke.toNode('Grade1').knob('gamma').defaultValue() )
